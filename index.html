@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <th>Amount</th>
+                <th>From Currency</th>
+                <th>To Currency</th>
+            </tr>
+            <tr>
+                <td><input type="text" ; id="amount"></td>
+                <td>
+                    <select id="fromcurrency" >
+                        <option value="vnd" selected>vnd</option>
+                        <option value="usd">usd</option>
+                    </select>
+
+                </td>
+                <td>
+                    <select id="tocurrency">
+                        <option value="usd" selected>usd</option>
+                        <option value="vnd">vnd</option>
+                    </select>
+                </td>
+                <td><input type="button" value="Convert" onclick="convert()"></td>
+            </tr>
+            <tr>
+                <td colspan="4" ><p id="result" style="color: blue"></p></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function convert() {
+            let a = parseInt(document.getElementById('amount').value);
+            let f = document.getElementById('fromcurrency').value;
+            let t = document.getElementById('tocurrency').value;
+            let result;
+            if      (f == t) { result = a*1; document.getElementById('result').innerText = result}
+            else if (f == 'vnd' && t == 'usd') { result = a/2300; document.getElementById('result').innerText = 'Result: ' + result +' VND' }
+            else { result = a*2300; document.getElementById('result').innerText = 'Result: ' + result +' USD' }
+        }
+    </script>
+</body>
+</html>
